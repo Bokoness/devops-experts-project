@@ -8,6 +8,7 @@ kubectl apply -f k8s/configmap.yml
 kubectl apply -f k8s/deployment.yml
 kubectl apply -f k8s/service.yml
 kubectl apply -f k8s/hpa.yml
+kubectl apply -f k8s/cronjob.yml
 
 # Wait for pods to be ready (optional, adjust timeout as needed)
 echo "Waiting for pods to be ready..."

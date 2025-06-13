@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: flask-app-cronjob
+spec:
+  schedule: "*/1 * * * *" # Run every minute (adjust as needed)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron
+              image: busybox
+              command: ["echo", "Hello from the Flask app CronJob!"]
+          restartPolicy: OnFailure
+# How It Works
+# Kubernetes will create a new Job (and thus a Pod) every minute, as defined by the schedule.
+# The Pod runs your command (echo ...) and exits.
+# You can view the output in the logs of the Pod created by the Job.
