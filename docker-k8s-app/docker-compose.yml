@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  myapp:
+    build: .
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - ./volume_dir_local:/volume_dir_container  # No real use, only for practice
+    environment:
+      - PORT=5000

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: flask-pod
+  template: # This is the pod template
+    metadata:
+      labels:
+        run: flask-pod
+    spec:
+      containers:
+        - name: flask-container
+          image: bokoness/flask-app:latest # Name for the container within the Pod
+          ports:
+            - containerPort: 5000
+          env:
+            - name: ENV_VAR_NAME
+              value: "value"
