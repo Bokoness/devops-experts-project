@@ -17,9 +17,6 @@ spec:
           image: bokoness/flask-app:latest
           ports:
             - containerPort: 5000
-          env:
-            - name: ENV_VAR_NAME
-              value: "value"
           resources: # Correctly nested under resources
             requests:
               cpu: "100m"
@@ -27,3 +24,9 @@ spec:
             limits:
               cpu: "500m"
               memory: "512Mi"
+          env:
+            - name: FLASK_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: flask-app-config
+                  key: app_port
