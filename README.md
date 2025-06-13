@@ -12,6 +12,7 @@ devops-experts-tasks
 ├── README.md               # Project documentation
 ├── k8s
 │   ├── configmap.yml       # Kubernetes ConfigMap resource
+│   ├── cronjob.yml         # Kubernetes CronJob resource
 │   ├── deployment.yml      # Kubernetes Deployment resource
 │   ├── flask-pod.yml       # Kubernetes Pod resource for Flask
 │   ├── hpa.yml             # Kubernetes Horizontal Pod Autoscaler resource
