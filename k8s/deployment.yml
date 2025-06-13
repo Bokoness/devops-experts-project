@@ -10,14 +10,14 @@ spec:
   template: # This is the pod template
     metadata:
       labels:
-        app: flask-app # Changed from run: flask-app to match selector
+        app: flask-app
     spec:
       containers:
         - name: flask
           image: bokoness/flask-app:latest
           ports:
             - containerPort: 5000
-          resources: # Correctly nested under resources
+          resources:
             requests:
               cpu: "100m"
               memory: "256Mi"
@@ -30,3 +30,15 @@ spec:
                 configMapKeyRef:
                   name: flask-app-config
                   key: app_port
+          livenessProbe:
+            httpGet:
+              path: /health # Health check endpoint
+              port: 5000
+            initialDelaySeconds: 5 # How long to wait after the container starts before running the first probe
+            periodSeconds: 10 # How often to perform the probe
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
