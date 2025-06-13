@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-flask-pod
+spec:
+  containers:
+  - name: my-app
+    image: bokoness/flask-app:latest
+    ports:
+    - containerPort: 80
